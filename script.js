@@ -1,7 +1,8 @@
 function createGrid( numberOfSquaresPerSide ){
     let fragment = new DocumentFragment();
-
+    
     let container = document.createElement("div");
+    container.classList = "containerBox";
     container.style.cssText = "border: solid 10px black; width: 480px; height: 480px; display: flex; flex-wrap: wrap; padding: 0; background-color:black;";
 
     let html = document.querySelector('html');
@@ -22,7 +23,6 @@ function createGrid( numberOfSquaresPerSide ){
             gridBox.style.cssText += "background-color: black;";
         })
         container.appendChild(gridBox);
-        console.log(pixelsPerSquare);
     }
     
     body.appendChild(fragment);
@@ -36,6 +36,10 @@ button.style.cssText = 'margin-bottom: 100px;';
 
 button.addEventListener('click', () =>{
     let newSize = prompt("How many sqaures per side?");
+    let container = document.querySelector('.containerBox');
+    body.removeChild(container);
+    createGrid(newSize);
+    
 });
 
 body.appendChild(button);
