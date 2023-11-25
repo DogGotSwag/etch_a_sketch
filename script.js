@@ -36,11 +36,16 @@ button.style.cssText = 'margin-bottom: 100px;';
 
 button.addEventListener('click', () =>{
     let newSize = prompt("How many sqaures per side?");
-    let container = document.querySelector('.containerBox');
-    body.removeChild(container);
-    createGrid(newSize);
-    
+    if( newSize > 100){
+        alert('Number too big will destroy CPU');
+    }
+    else{
+        let container = document.querySelector('.containerBox');
+        body.removeChild(container);
+        createGrid(newSize);
+    }
+   
 });
 
 body.appendChild(button);
-createGrid(26);
+createGrid(16);
