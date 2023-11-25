@@ -2,7 +2,7 @@ function createGrid( numberOfSquaresPerSide ){
     let fragment = new DocumentFragment();
 
     let container = document.createElement("div");
-    container.style.cssText = "border: solid 2px black; width: 480px; height: 480px; display: flex; flex-wrap: wrap;";
+    container.style.cssText = "border: solid 10px black; width: 480px; height: 480px; display: flex; flex-wrap: wrap; padding: 0; background-color:black;";
 
     let html = document.querySelector('html');
     html.style.cssText = "height: 100%;";
@@ -16,15 +16,16 @@ function createGrid( numberOfSquaresPerSide ){
     for(let i = 0; i < numberOfSquaresPerSide*numberOfSquaresPerSide; i++){
         let pixelsPerSquare = 480/numberOfSquaresPerSide;
         let gridBox = document.createElement('div');
-        gridBox.style.cssText = `box-sizing: border-box; width: ${pixelsPerSquare}px; height: ${pixelsPerSquare}px; border: 1px solid black;`;
+        gridBox.style.cssText = `box-sizing: border-box; width: ${pixelsPerSquare}px; height: ${pixelsPerSquare}px; border: 1px solid black; background-color:wheat;`;
 
         gridBox.addEventListener('mouseover', () =>{
             gridBox.style.cssText += "background-color: black;";
         })
         container.appendChild(gridBox);
+        console.log(pixelsPerSquare);
     }
     
-    return fragment;
+    body.appendChild(fragment);
 }
 
 let body = document.querySelector('body');
@@ -38,4 +39,4 @@ button.addEventListener('click', () =>{
 });
 
 body.appendChild(button);
-body.appendChild( createGrid(16) );
+createGrid(26);
