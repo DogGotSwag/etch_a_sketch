@@ -20,12 +20,17 @@ function createGrid( numberOfSquaresPerSide ){
         gridBox.style.cssText = `box-sizing: border-box; width: ${pixelsPerSquare}px; height: ${pixelsPerSquare}px; border: 1px solid black; background-color:wheat;`;
 
         gridBox.addEventListener('mouseover', () =>{
-            gridBox.style.cssText += "background-color: black;";
+            gridBox.style.backgroundColor = random_rgba();
         })
         container.appendChild(gridBox);
     }
     
     body.appendChild(fragment);
+}
+
+function random_rgba() {
+    let o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 }
 
 let body = document.querySelector('body');
