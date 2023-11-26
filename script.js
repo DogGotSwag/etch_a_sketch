@@ -22,11 +22,42 @@ function createGrid( numberOfSquaresPerSide ){
         gridBox.addEventListener('mouseover', () =>{
             
             if( gridBox.classList == ''){
-                gridBox.style.backgroundColor = random_rgba();
-                gridBox.setAttribute('class', "used");
+                let randomColor = random_rgba();
+                gridBox.style.backgroundColor = 'rgba('+randomColor+')';
+                gridBox.setAttribute('class', randomColor);
+
+                let rgbaValues = gridBox.className.split(',');
+                let tenPercentLess = '';
+                for(let i = 0; i < rgbaValues.length; i++){
+                    if( i < rgbaValues.length-1){
+                        tenPercentLess += `${rgbaValues[i]/10},`
+                    }
+                    else{
+                        tenPercentLess += `${rgbaValues[i]/10}`
+                    }
+                    
+                }
+                
+                gridBox.setAttribute('id', tenPercentLess);
             }
             else{
-                console.log(gridBox.classList);
+                let currentColorValue = gridBox.className.split(',');
+                let tenPerLess = gridBox.id.split(',');
+
+                let newColor = '';
+                for(let i = 0; i < currentColorValue.length; i++){
+                    if( i < currentColorValue.length-1){
+                        newColor += `${currentColorValue[i]-tenPerLess[i]},`
+                    }
+                    else{
+                        newColor += `${currentColorValue[i]-tenPerLess[i]}`
+                    }
+                }
+                gridBox.setAttribute('class', newColor);
+                let setNewColor = newColor.split(',');
+
+                gridBox.style.backgroundColor = 'rgba('+setNewColor[0] + ',' + setNewColor[1] + ',' + setNewColor[2] + ',' +setNewColor[3]+')';
+                
             }
         })
         container.appendChild(gridBox);
@@ -37,7 +68,7 @@ function createGrid( numberOfSquaresPerSide ){
 
 function random_rgba() {
     let o = Math.round, r = Math.random, s = 255;
-    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+    return o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1);
 }
 
 let body = document.querySelector('body');
