@@ -20,7 +20,14 @@ function createGrid( numberOfSquaresPerSide ){
         gridBox.style.cssText = `box-sizing: border-box; width: ${pixelsPerSquare}px; height: ${pixelsPerSquare}px; border: 1px solid black; background-color:wheat;`;
 
         gridBox.addEventListener('mouseover', () =>{
-            gridBox.style.backgroundColor = random_rgba();
+            
+            if( gridBox.classList == ''){
+                gridBox.style.backgroundColor = random_rgba();
+                gridBox.setAttribute('class', "used");
+            }
+            else{
+                console.log(gridBox.classList);
+            }
         })
         container.appendChild(gridBox);
     }
