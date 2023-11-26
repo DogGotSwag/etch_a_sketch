@@ -3,7 +3,7 @@ function createGrid( numberOfSquaresPerSide ){
     
     let container = document.createElement("div");
     container.classList = "containerBox";
-    container.style.cssText = "border: solid 10px black; width: 480px; height: 480px; display: flex; flex-wrap: wrap; padding: 0; background-color:black;";
+    container.style.cssText = "border: solid 10px black; width: 600px; height: 600px; display: flex; flex-wrap: wrap; padding: 0; background-color:black;";
 
     let html = document.querySelector('html');
     html.style.cssText = "height: 100%;";
@@ -15,7 +15,7 @@ function createGrid( numberOfSquaresPerSide ){
 
 
     for(let i = 0; i < numberOfSquaresPerSide*numberOfSquaresPerSide; i++){
-        let pixelsPerSquare = 480/numberOfSquaresPerSide;
+        let pixelsPerSquare = 600/numberOfSquaresPerSide;
         let gridBox = document.createElement('div');
         gridBox.style.cssText = `box-sizing: border-box; width: ${pixelsPerSquare}px; height: ${pixelsPerSquare}px; border: 1px solid black; background-color:wheat;`;
 
